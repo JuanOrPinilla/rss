@@ -11,6 +11,7 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
+import org.jsoup.Jsoup;
 
 import java.net.URL;
 import java.time.ZoneId;
@@ -36,7 +37,11 @@ public class RssService {
                 for(SyndEntry entry : feed.getEntries()) {
                     Article article = new Article();
                     article.setTitle(entry.getTitle());
-                    article.setDescription(entry.getDescription() != null ? entry.getDescription().getValue() : "");
+                    
+                    String rawDescription = entry.getDescription() != null ? entry.getDescription().getValue() : "";
+                    String cleanDescription = Jsoup.parse(rawDescription).text();
+                    article.setDescription(cleanDescription);
+                    
                     article.setCategory(entry.getCategories().isEmpty() ? "" : entry.getCategories().get(0).getName());
                     article.setLink(entry.getLink());
                     
