@@ -59,7 +59,8 @@ public class RssService {
                     articles.add(article);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                System.err.println("Error procesando feed desde: " + sourceUrl);
+                System.err.println("Motivo: " + e.getMessage());
             }
         }
     

@@ -16,7 +16,7 @@ public class RssServiceTest {
      * y que cada artículo tenga sus campos esenciales no nulos.
      */
     @Test
-    public void testFetchArticlesReturnsResults() {
+    public void FetchArticlesReturnsResults() {
         RssProperties props = new RssProperties();
         props.setSources(Collections.singletonList("https://dev.to/feed/tag/javascript"));
 
@@ -37,7 +37,7 @@ public class RssServiceTest {
      * y devuelva  una lista vacía.
      */
     @Test
-    public void testWithInvalidUrl() {
+    public void InvalidUrl() {
         RssProperties props = new RssProperties();
         props.setSources(Collections.singletonList("https://www.youtube.com"));
 
@@ -53,7 +53,7 @@ public class RssServiceTest {
      * al menos se obtienen artículos de las fuentes válidas.
      */
     @Test
-    public void testMixedValidAndInvalidSources() {
+    public void MixedValidAndInvalidSources() {
         RssProperties props = new RssProperties();
         props.setSources(List.of(
             "https://dev.to/feed/tag/javascript",
@@ -72,7 +72,7 @@ public class RssServiceTest {
      * Verifica que los artículos estén ordenados de forma descendente por fecha de publicación.
      */
     @Test
-    public void testArticlesAreSortedByDateDescending() {
+    public void ArticlesAreSortedByDateDescending() {
         RssProperties props = new RssProperties();
         props.setSources(List.of("https://dev.to/feed/tag/javascript"));
 
