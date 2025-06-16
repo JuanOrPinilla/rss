@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Clase de configuración que mapea las propiedades definidas en el archivo  de application.yml
- * Permite acceder fácilmente a la lista de URLs de feeds RSS.
+ * Permite acceder fácilmente a la lista de URLs de fuentes RSS.
  */
 
 @Configuration

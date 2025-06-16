@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RssServiceTest {
 
-     /**
+    /**
      * Verifica que al consultar una fuente válida se obtenga una lista de artículos no vacía,
      * y que cada artículo tenga sus campos esenciales no nulos.
      */
@@ -48,7 +48,7 @@ public class RssServiceTest {
         assertTrue(articles.isEmpty(), "Una URL inválida debe retornar lista vacía");
     }
 
-     /**
+    /**
      * Verifica que si se mezclan fuentes válidas e inválidas,
      * al menos se obtienen artículos de las fuentes válidas.
      */
@@ -88,6 +88,25 @@ public class RssServiceTest {
                     .isEqual(articles.get(i + 1).getPublishedAt()),
                     "Los artículos deben estar en orden descendente por fecha");
         }
+    }
+
+    /**
+    * Verifica que si una entrada no tiene categorías, el campo categories sea null.
+    */
+    @Test
+    public void CategoriesShouldBeNullWhenNotPresent() {
+        RssProperties props = new RssProperties();
+        props.setSources(Collections.singletonList("https://hnrss.org/newest"));
+        RssService rssService = new RssService(props);
+        List<Article> articles = rssService.fetchArticles();
+
+        assertNotNull(articles);
+        assertFalse(articles.isEmpty());
+
+        boolean foundNullCategory = articles.stream()
+            .anyMatch(article -> article.getCategories() == null);
+
+        assertTrue(foundNullCategory, "Debe haber al menos un artículo con categorías en null");
     }
 
 }
