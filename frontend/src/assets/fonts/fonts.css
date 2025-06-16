@@ -1,0 +1,15 @@
+
+/* BowlbyOne */
+@font-face {
+  font-family: 'BowlbyOne';
+  src: url('./BowlbyOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./Inter-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

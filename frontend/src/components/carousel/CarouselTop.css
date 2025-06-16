@@ -1,0 +1,23 @@
+.text-slide {
+  background-color: #010346;
+  color: #EADEF0;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  border-radius: 0.5rem;
+}
+
+.text-slide h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.text-slide p {
+  font-size: 1.2rem;
+  margin: 0;
+}
