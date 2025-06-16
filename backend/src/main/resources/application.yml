@@ -1,0 +1,4 @@
+rss:
+  sources:
+    - https://dev.to/feed/tag/javascript
+    - https://www.genbeta.com/feedburner.xml
