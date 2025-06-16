@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class RssService {
                     String rawDescription = entry.getDescription() != null ? entry.getDescription().getValue() : "";
                     String cleanDescription = Jsoup.parse(rawDescription).text();
                     article.setDescription(cleanDescription);
-                    
+
                     article.setCategory(entry.getCategories().isEmpty() ? "" : entry.getCategories().get(0).getName());
                     article.setLink(entry.getLink());
                     
@@ -61,6 +62,9 @@ public class RssService {
                 e.printStackTrace();
             }
         }
+    
+    articles.sort(Comparator.comparing(Article::getPublishedAt).reversed());
+    
     return articles;
     }
 }
