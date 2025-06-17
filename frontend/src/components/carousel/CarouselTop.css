@@ -1,10 +1,14 @@
 .carousel-container {
-  max-width: 100rem;
-  margin: 0 auto;
+  width: 100vw; 
+  margin: 0; 
+  padding: 0;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 2s ease-out forwards;
   animation-delay: 1.5s;
+  overflow-x: hidden;
+  margin-top: 1rem;
+  
 }
 
 @keyframes fadeInUp {
@@ -79,7 +83,7 @@
 }
 
 /* Flip on hover, only if slick-center */
-.slick-center .flip-inner:hover {
+.slick-center .flip-card:hover .flip-inner {
   transform: rotateY(180deg);
 }
 
@@ -114,4 +118,47 @@
   padding-top: 1rem;
 }
 
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
 
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #010346;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  z-index: 2;
+  color: #010346;
+  padding: 0.5rem 1rem;
+  border-radius: 0%;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.arrow:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow.prev {
+  left: 2rem;
+}
+
+.arrow.next {
+  right: 2rem;
+}

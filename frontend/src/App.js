@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Carousel from './components/carousel/CarouselTop.js';
+import List from './components/list/list.js';
 import './assets/fonts/fonts.css';
 
 function App() {
@@ -33,8 +34,28 @@ function App() {
         <h2 className="subtitle fade-subtitle">
           Contenido de múltiples fuentes en un solo lugar, actualizado cada 24 horas. Lee titulares, explora resúmenes y amplía solo lo que te interesa
         </h2>
+        <div className="scroll-banner">
+          <p className="scroll-text">TUS 5 NOTICIAS AL INSTANTE</p>
+        </div>
+
         <div className="carousel-container">
           <Carousel/>
+        </div>
+        <div
+          className="banner"
+          role="button"
+          onClick={() => {
+            window.scrollTo({
+              top: window.innerHeight,
+              behavior: 'smooth'
+            });
+          }}
+        >
+          <p className="text-list">OTRAS NOTICIAS</p>
+        </div>
+
+        <div>
+          <List/>
         </div>
           
       </main>
