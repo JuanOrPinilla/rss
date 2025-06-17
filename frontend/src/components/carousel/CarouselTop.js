@@ -25,7 +25,7 @@ function CarouselTop() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    fetch('/rss.json')
+    fetch('rss.json')
       .then(res => res.json())
       .then(data => setArticles(data.slice(0, 5)))
       .catch(err => console.error('Error fetching articles:', err));
