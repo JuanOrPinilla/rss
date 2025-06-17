@@ -6,7 +6,7 @@ function List() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/articles')
+    fetch('/rss.json')
       .then(res => res.json())
       .then(data => setArticles(data))
       .catch(err => console.error('Error fetching articles:', err));

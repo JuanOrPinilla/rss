@@ -25,12 +25,11 @@ function CarouselTop() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/articles')
+    fetch('/rss.json')
       .then(res => res.json())
       .then(data => setArticles(data.slice(0, 5)))
       .catch(err => console.error('Error fetching articles:', err));
-  }, []);
-
+  }, [])
   const settings = {
   centerMode: true,
   centerPadding: '60px',
