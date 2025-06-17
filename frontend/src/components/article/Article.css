@@ -1,0 +1,50 @@
+.article-card {
+  background: linear-gradient(to bottom, #e8dff1, #a187f4);
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 36rem;
+  width: 100%;
+  margin: 0 auto;
+  color: #010346;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeInUpCard 2s ease-out forwards;
+  animation-delay: 1.5s;
+  opacity: 0;
+  transform: translateY(20px);
+  cursor: pointer;
+}
+
+.article-card:hover {
+  background: linear-gradient(to bottom, #d4c0f1, #8262f4);
+}
+
+.article-card.visited {
+  border: 3px solid #010346;
+}
+
+@keyframes fadeInUpCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.article-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.article-date {
+  font-size: 0.9rem;
+  color: #444;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.article-summary {
+  font-size: 1rem;
+  text-align: justify;
+}

@@ -14,7 +14,7 @@ public class Article {
     private String title;
     private String summary;
     private String description;
-    private List<String> categories;
+    private List<String> categories; 
     private String link;
     private ZonedDateTime publishedAt;
     private String imageUrl;
