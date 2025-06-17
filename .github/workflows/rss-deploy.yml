@@ -2,20 +2,34 @@ name: Build and Deploy RSS Feed Page
 
 on:
   schedule:
-    - cron: '0 3 * * *'
-  workflow_dispatch:   
+    - cron: '0 3 * * *'  # Ejecuta todos los días a las 3 AM UTC
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: frontend  
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build backend and generate rss.json
+        run: |
+          ./mvnw clean package -f backend/pom.xml
+          java -jar backend/target/*.jar
+        env:
+          SPRING_PROFILES_ACTIVE: prod
+
+      - name: Move rss.json into frontend/public/
+        run: |
+          mkdir -p frontend/public
+          cp output/rss.json frontend/public/rss.json
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -24,9 +38,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: frontend
 
-      - name: Build project
+      - name: Build frontend
         run: npm run build
+        working-directory: frontend
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
