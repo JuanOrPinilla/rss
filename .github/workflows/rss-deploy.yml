@@ -20,6 +20,9 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Make mvnw executable
+        run: chmod +x ./backend/mvnw
+        
       - name: Build and run backend to generate rss.json
         run: |
           cd backend
