@@ -10,9 +10,7 @@ Este proyecto es un **lector de feeds RSS automatizado** que recolecta noticias 
 - Genera un JSON con los artículos unificados.
 - Construye una página web con los resultados (frontend en React).
 - La página se actualiza automáticamente cada 24 horas gracias a GitHub Actions.
-- Publicación automática en GitHub Pages (o repositorio externo).
-
-⚠️ **No realiza llamadas en tiempo real**. Toda la información se actualiza en segundo plano mediante un cronjob diario.
+- Publicación automática en GitHub Pages.
 
 ## 🛠️ Tecnologías utilizadas
 
