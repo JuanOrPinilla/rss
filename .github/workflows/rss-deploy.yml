@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 1️⃣ BACKEND: Instalar Java y compilar + ejecutar
+      # 1️⃣ BACKEND
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
@@ -28,9 +28,11 @@ jobs:
           cd backend
           ./mvnw clean package -DskipTests
           java -jar target/*.jar
-  
 
-      # 2️⃣ FRONTEND: Instalar Node, build y deploy
+      - name: Verificar rss.json
+        run: cat ./frontend/public/rss.json
+
+      # 2️⃣ FRONTEND
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -44,7 +46,13 @@ jobs:
         working-directory: ./frontend
         run: npm run build
 
-      # 3️⃣ DEPLOY a GitHub Pages
+      - name: Confirmar existencia de index.html
+        run: test -f ./frontend/build/index.html && echo "✅ index.html encontrado"
+
+      - name: Listar contenido de build
+        run: ls -R ./frontend/build
+
+      # 3️⃣ DEPLOY
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
