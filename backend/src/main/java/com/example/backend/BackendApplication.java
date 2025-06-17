@@ -29,10 +29,8 @@ public class BackendApplication implements CommandLineRunner {
         List<Article> articles = rssService.fetchArticles();
         File outputFile = new File("frontend/public/rss.json");
 
-        // Crear carpeta si no existe
         outputFile.getParentFile().mkdirs();
 
-        // Guardar como JSON
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(outputFile, articles);
         System.out.println("✅ Archivo rss.json generado en: frontend/public/rss.json");
     }
