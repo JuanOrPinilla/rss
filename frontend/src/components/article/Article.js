@@ -16,6 +16,7 @@ function Article(props) {
   return (
     <>
       <div
+        role="article"
         className={`article-card ${hasBeenVisited ? 'visited' : ''}`}
         onClick={handleOpen}
       >
