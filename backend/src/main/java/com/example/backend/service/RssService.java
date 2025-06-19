@@ -52,8 +52,6 @@ public class RssService {
                     // Asigna el título del artículo
                     article.setTitle(entry.getTitle());
 
-                    
-                    // Limpia la descripción de etiquetas HTML usando Jsoup
                     String rawDescription = entry.getDescription() != null ? entry.getDescription().getValue() : "";
                     String cleanDescription = Jsoup.parse(rawDescription).text();
                     article.setDescription(rawDescription);
