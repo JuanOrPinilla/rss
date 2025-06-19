@@ -26,7 +26,6 @@ function CarouselTop() {
 
   useEffect(() => {
     fetch('rss.json', { cache: 'no-store' })
-
       .then(res => res.json())
       .then(data => setArticles(data.slice(0, 5)))
       .catch(err => console.error('Error fetching articles:', err));
