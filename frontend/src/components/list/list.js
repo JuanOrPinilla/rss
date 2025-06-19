@@ -6,7 +6,7 @@ function List() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch('rss.json')
+    fetch('rss.json', { cache: 'no-store' })
       .then(res => res.json())
       .then(data => setArticles(data))
       .catch(err => console.error('Error fetching articles:', err));
